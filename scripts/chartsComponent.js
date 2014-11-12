@@ -1,5 +1,27 @@
 /** @jsx React.DOM */
 var Chart = React.createClass({
+	// componentDidMount: function() {
+	// 	var margin = {top: 40, right: 40, bottom: 0, left:0};
+	// 	var svg = d3.select('svg')
+	// 			    .attr('class', 'chart')
+	// 			    .attr('width', this.props.width)
+	// 			    .attr('height', this.props.height + margin.top)
+	// 			  	.append('g')
+	// 			    .attr('transform', 'translate(' + margin.left + ', ' + margin.top + ')');
+
+	// 	var xScale = d3.scale.ordinal()
+	// 			  .domain(_.range(1, this.props.data.length + 1).reverse())
+	// 			  .rangeRoundBands([1, this.props.width], 0.05);
+		
+	// 	var xAxis = d3.svg.axis()
+	// 	    .scale(xScale)
+	// 	    .orient("bottom");
+  
+	//     svg.append('g')
+	// 	    .attr('class', 'x axis')
+	// 	    .attr('transform', 'translate(0, ' + (this.props.height - margin.top - margin.bottom) + ')')
+	// 	    .call(xAxis);
+	// },
 	render: function() {
 		return (
 	    	<svg width={this.props.width} height={this.props.height}>{this.props.children}</svg>
@@ -32,9 +54,11 @@ var Title = React.createClass({
 		}
 	},
 	render: function() {
+		var y = this.props.height > 15 ? this.props.availableHeight - this.props.height + 10 : this.props.availableHeight - this.props.height - 2;
+		var fill = this.props.height > 15 ? "white" : "black";
 		return (
-	    	<text textAnchor="middle" fontFamily="sans-serif" fontSize="11px" fill="white"
-      			x={this.props.offset + (this.props.width / 2)} y={this.props.availableHeight - this.props.height + 10}>{this.props.value}</text>
+	    	<text textAnchor="middle" fontFamily="sans-serif" fontSize="11px" fill={fill}
+      			x={this.props.offset + (this.props.width / 2)} y={y}>{this.props.value}</text>
 		);
 	}
 });
@@ -45,10 +69,11 @@ var DataSeries = React.createClass({
 		    title: '',
 		    data: []
 		}
-	},
+	}
+	,
 	render: function() {
 		var props = this.props;
-
+		
 		var yScale = d3.scale.linear()
 		  .domain([0, d3.max(this.props.data)])
 		  .range([0, this.props.height]);
@@ -57,14 +82,6 @@ var DataSeries = React.createClass({
 		  .domain(d3.range(this.props.data.length))
 		  .rangeRoundBands([0, this.props.width], 0.05);
 		
-		var xAxis = d3.svg.axis()
-		    .scale(xScale)
-		    .orient("bottom");
-		 
-		var yAxis = d3.svg.axis()
-		    .scale(yScale)
-		    .orient("left");
-
 		var bars = this.props.data.map(function(point, i) {
 			return (
 				<Bar value={point} height={yScale(point)} width={xScale.rangeBand()} offset={xScale(i)} availableHeight={props.height} key={i} />
@@ -77,8 +94,6 @@ var DataSeries = React.createClass({
 		});
 		return (
 			<g>
-				{xAxis}
-				{yAxis}
 				{bars}
 				{titles}
 			</g>
@@ -95,7 +110,7 @@ var BarChart = React.createClass({
 	},
 	render: function() {
 	  return (
-	    <Chart width={this.props.width} height={this.props.height}>
+	    <Chart data={this.props.data} width={this.props.width} height={this.props.height}>
 	    	<DataSeries data={this.props.data} width={this.props.width} height={this.props.height} />
 	    </Chart>
 	  );

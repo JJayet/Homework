@@ -20,6 +20,7 @@ var Repository = React.createClass({
 	},
 	render: function() {
 		var active = this.getCurrentPath().indexOf("commitsActivity") > -1 ? "2" : this.getCurrentPath().indexOf("LastYearCommitsTimeline") > -1 ? "3" : this.getCurrentPath().indexOf("LastHundredCommitsTimeline") > -1 ? "4" : "1";
+		//<li className={active == "3" ? "active" : ""}><Link to="LastYearCommitsTimeline" params={{owner: this.props.params.owner, repository: this.props.params.repository}}>1 an de commits</Link></li>
 		return (
 			<div>
 				<h4>Stats pour : {this.props.params.repository} <small>by {this.props.params.owner}</small></h4>
@@ -27,7 +28,6 @@ var Repository = React.createClass({
 				  <li className={active == "1" ? "active" : ""}><Link to="contributors" params={{owner: this.props.params.owner, repository: this.props.params.repository}}>Contributeurs</Link></li>
 				  <li className={active == "2" ? "active" : ""}><Link to="commitsActivity" params={{owner: this.props.params.owner, repository: this.props.params.repository}}>Leur impact sur 100 commits</Link></li>
 				  <li className={active == "4" ? "active" : ""}><Link to="LastHundredCommitsTimeline" params={{owner: this.props.params.owner, repository: this.props.params.repository}}>Timeline des 100 commits</Link></li>
-				  <li className={active == "3" ? "active" : ""}><Link to="LastYearCommitsTimeline" params={{owner: this.props.params.owner, repository: this.props.params.repository}}>1 an de commits</Link></li>
 				</ul>
 				<div id="tabContent" className="tab-content">
 					<this.props.activeRouteHandler />

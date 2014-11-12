@@ -198,17 +198,19 @@ var LastYearCommitsTimeline = React.createClass({
 	    {
 	    	var results = _.map(this.state.data, function(item, index) {
 		        return (
-					{time : item.week, data: item.total}
+					{time : item.week*1000, data: item.total}
 		        );
 	    	});
 
 	    	var value = _.find(results, function(o) {return o.data > 0;});
 			if (!_.isUndefined(value) && value.data > 0) {
 		    	return (
-		    		<div className="container-fluid">
-		    			<h4>Liste des commits sur les 52 dernières semaines</h4>
-		        		<BarChart width={this.state.width} data={results}/>
-		        	</div>
+		    		<div>
+		    			<div className="container-fluid">
+			    			<h4>Liste des commits sur les 52 dernières semaines</h4>
+			    		</div>
+		      			<BarChart width={this.state.width} data={results}/>
+        			</div>
 		    	);
 	    	}
 	    	else {
@@ -255,7 +257,7 @@ var LastHundredCommitsTimeline = React.createClass({
 	    {
 	    	var trueResultsToDisplay = [];
 	    	var counter = 0;
-
+	    	
 	    	var results = _.each(this.state.data.commitsGrouppedByDate, function(item) {
 	    		//trueResultsToDisplay.push(<h4>{new Tools().getFormattedDate(item[0].commit.author.date)}</h4>);
 	    		_.map(item, function(i, index){

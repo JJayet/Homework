@@ -1,19 +1,17 @@
 /** @jsx React.DOM */
 var Chart = React.createClass({
 	updateAxis: function() {
-		var margin = {top: 40, right: 40, bottom: 0, left:0};
+		var margin = {top: 80, right: 0, bottom: 0, left:0};
 		var svg = d3.select('svg')
 				    .attr('class', 'chart')
 				    .attr('width', this.props.width)
 				    .attr('height', this.props.height + margin.top)
 				  	.append('g')
 				    .attr('transform', 'translate(' + margin.left + ', ' + margin.top + ')');
+		console.info(this.props.width);
 		var xScale = d3.scale.ordinal()
-					  .domain(_.range(1, this.props.data.length + 1).reverse())
-					  .rangeRoundBands([1, this.props.width], 0.05);
-		// var xScale = d3.time.scale()
-		// 		  .domain(_.range(this.props.data[0].time, this.props.data[this.props.data.length - 1].time).reverse())
-		// 		  .rangeRound([0, this.props.width - margin.left - margin.right]);
+					   .domain(_.map(this.props.data, function(o) {return new Tools().getFormattedDate(o.time);}))
+					   .rangeRoundBands([0, this.props.width], 0);
 		
 		var xAxis = d3.svg.axis()
 		    .scale(xScale)
@@ -23,7 +21,11 @@ var Chart = React.createClass({
 	    svg.append('g')
 		    .attr('class', 'x axis')
 		    .attr('transform', 'translate(0, ' + (this.props.height - margin.top - margin.bottom) + ')')
-		    .call(xAxis);
+		    .call(xAxis)
+		    .selectAll("text")
+		    	.attr("transform", function(d){
+		    		return "rotate(-65), translate(-40, 0)";
+		    	});
 	},
 	componentDidMount: function() {
 		this.updateAxis();

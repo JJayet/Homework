@@ -31,6 +31,17 @@ app.get('/getLast100WithGraph', function (req, res, next) {
 	    					if (item.author != null)
 	    						return item.author.login;
 	    					}));
+    		// trueResults.push(
+    		// 	{
+    		// 		committer : _.uniq(o, function (item){
+	    	// 				if (item.author != null)
+	    	// 					return item.author.login;
+	    	// 				}),
+    		// 		nbOfContribs : _.countBy(o, function (item){
+	    	// 				if (item.author != null)
+	    	// 					return item.author.login;
+	    	// 				})
+    		// 	});
     	});
 		var statsData = _.map(commitsGrouppedByDate, function(o) 
 			{

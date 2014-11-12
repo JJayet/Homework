@@ -1,0 +1,136 @@
+.gitResults-enter {
+  opacity: 0;
+  transition: opacity 5s ease-in;
+}
+
+.gitResults-enter.gitResults-enter-active {
+  opacity: 1;
+}
+
+.row .thumbnail {
+    border:0;
+    box-shadow:0;
+    border-radius:0;
+}
+
+.thumbnail{
+    width: 90px;
+    height: 90px;
+    overflow: auto;
+}
+
+.thumbnail img {
+	min-height:82px; 
+	height:82px;
+	min-width:82px; 
+	width:82px; 
+}
+
+.caption-btm {
+    background: rgba(0, 0, 0, 0.4);
+    width: 82px;
+    height: 16px;
+    position: absolute;
+    color: #fff;
+    display: table;
+}
+
+.caption-btm p {
+    text-align: center;
+    display: table-cell;
+    vertical-align: middle;
+    word-break: break-all;
+    font-size: 12px;
+  	word-wrap: break-word;
+}
+
+.media-left img {
+    display: block;
+    width: 76px;
+    height: 76px;
+    border: 0;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+
+.bottom {
+	bottom: 24px;
+}
+
+.moveUp-enter {
+  position: absolute;
+
+  transition-duration: .3s;
+  transition-property: -webkit-transform, opacity;
+  transition-timing-function: ease-out;
+  -webkit-transform: translate3d(0,100%,0);
+  z-index: 10000;
+}
+
+.moveUp-enter.moveUp-enter-active {
+  -webkit-transform: translate3d(0,0,0);
+}
+
+.moveUp-leave {
+  position: absolute;
+
+  transition-duration: .3s;
+  transition-property: -webkit-transform, opacity;
+  transition-timing-function: ease-out;
+  -webkit-transform: translate3d(0,0,0);
+  opacity: 1;
+}
+
+.moveUp-leave.moveUp-leave-active {
+  -webkit-transform: translate3d(0,-15%,0);
+  opacity: 0.3;
+}
+
+.moveDown-enter {
+  position: absolute;
+
+  transition-duration: .3s;
+  transition-property: -webkit-transform, opacity;
+  transition-timing-function: ease-out;
+  -webkit-transform: translate3d(0,-100%,0);
+  z-index: 10000;
+}
+
+.moveDown-enter.moveDown-enter-active {
+  -webkit-transform: translate3d(0,0,0);
+}
+
+.moveDown-leave {
+  position: absolute;
+
+  transition-duration: .3s;
+  transition-property: -webkit-transform, opacity;
+  transition-timing-function: ease-out;
+  -webkit-transform: translate3d(0,0,0);
+  opacity: 1;
+}
+
+.moveDown-leave.moveDown-leave-active {
+  -webkit-transform: translate3d(0,15%,0);
+  opacity: 0.3;
+}
+
+.fade-enter {
+  opacity: 0.01;
+  transition: opacity .3s ease-in;
+}
+
+.fade-enter.fade-enter-active {
+  opacity: 1;
+}
+
+.fade-leave {
+  opacity: 1;
+  transition: opacity .3s ease-in;
+}
+
+.fade-leave.fade-leave-active {
+  opacity: 0.01;
+}
+

@@ -1,0 +1,101 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node', '/usr/local/bin/npm', 'install', 'tools.js' ]
+2 info using npm@1.4.28
+3 info using node@v0.10.32
+4 warn package.json node-api@ No description
+5 warn package.json node-api@ No repository field.
+6 warn package.json node-api@ No README data
+7 verbose readDependencies using package.json deps
+8 verbose cache add [ 'tools.js', null ]
+9 verbose cache add name=undefined spec="tools.js" args=["tools.js",null]
+10 verbose parsed url { protocol: null,
+10 verbose parsed url   slashes: null,
+10 verbose parsed url   auth: null,
+10 verbose parsed url   host: null,
+10 verbose parsed url   port: null,
+10 verbose parsed url   hostname: null,
+10 verbose parsed url   hash: null,
+10 verbose parsed url   search: null,
+10 verbose parsed url   query: null,
+10 verbose parsed url   pathname: 'tools.js',
+10 verbose parsed url   path: 'tools.js',
+10 verbose parsed url   href: 'tools.js' }
+11 silly lockFile 61e9aca7-tools-js tools.js
+12 verbose lock tools.js /Users/jonathanjayet/.npm/61e9aca7-tools-js.lock
+13 verbose chmod /var/folders/lr/yxkt7km527j98kgqf5259dvh0000gn/T/npm-7529-oj1P4kNJ/1415733945246-0.7025539437308908/tmp.tgz 644
+14 verbose tar unpack /var/folders/lr/yxkt7km527j98kgqf5259dvh0000gn/T/npm-7529-oj1P4kNJ/1415733945246-0.7025539437308908/tmp.tgz
+15 silly lockFile 19bd4b97--7025539437308908-tmp-tgz-unpack tar:///var/folders/lr/yxkt7km527j98kgqf5259dvh0000gn/T/npm-7529-oj1P4kNJ/1415733945246-0.7025539437308908/tmp.tgz-unpack
+16 verbose lock tar:///var/folders/lr/yxkt7km527j98kgqf5259dvh0000gn/T/npm-7529-oj1P4kNJ/1415733945246-0.7025539437308908/tmp.tgz-unpack /Users/jonathanjayet/.npm/19bd4b97--7025539437308908-tmp-tgz-unpack.lock
+17 silly lockFile 0e274ff8-45246-0-7025539437308908-tmp-tgz tar:///var/folders/lr/yxkt7km527j98kgqf5259dvh0000gn/T/npm-7529-oj1P4kNJ/1415733945246-0.7025539437308908/tmp.tgz
+18 verbose lock tar:///var/folders/lr/yxkt7km527j98kgqf5259dvh0000gn/T/npm-7529-oj1P4kNJ/1415733945246-0.7025539437308908/tmp.tgz /Users/jonathanjayet/.npm/0e274ff8-45246-0-7025539437308908-tmp-tgz.lock
+19 silly gunzTarPerm modes [ '755', '644' ]
+20 error not a package /var/folders/lr/yxkt7km527j98kgqf5259dvh0000gn/T/npm-7529-oj1P4kNJ/1415733945246-0.7025539437308908/tmp.tgz
+21 silly lockFile 19bd4b97--7025539437308908-tmp-tgz-unpack tar:///var/folders/lr/yxkt7km527j98kgqf5259dvh0000gn/T/npm-7529-oj1P4kNJ/1415733945246-0.7025539437308908/tmp.tgz-unpack
+22 silly lockFile 19bd4b97--7025539437308908-tmp-tgz-unpack tar:///var/folders/lr/yxkt7km527j98kgqf5259dvh0000gn/T/npm-7529-oj1P4kNJ/1415733945246-0.7025539437308908/tmp.tgz-unpack
+23 silly lockFile 0e274ff8-45246-0-7025539437308908-tmp-tgz tar:///var/folders/lr/yxkt7km527j98kgqf5259dvh0000gn/T/npm-7529-oj1P4kNJ/1415733945246-0.7025539437308908/tmp.tgz
+24 silly lockFile 0e274ff8-45246-0-7025539437308908-tmp-tgz tar:///var/folders/lr/yxkt7km527j98kgqf5259dvh0000gn/T/npm-7529-oj1P4kNJ/1415733945246-0.7025539437308908/tmp.tgz
+25 silly lockFile 61e9aca7-tools-js tools.js
+26 silly lockFile 61e9aca7-tools-js tools.js
+27 verbose addNamed [ 'tools.js', '' ]
+28 verbose addNamed [ null, '*' ]
+29 silly lockFile 60e6ab8d-tools-js tools.js@
+30 verbose lock tools.js@ /Users/jonathanjayet/.npm/60e6ab8d-tools-js.lock
+31 silly addNameRange { name: 'tools.js', range: '*', hasData: false }
+32 verbose request where is /tools.js
+33 verbose request registry https://registry.npmjs.org/
+34 verbose request id faa667b2cfe253f7
+35 verbose url raw /tools.js
+36 verbose url resolving [ 'https://registry.npmjs.org/', './tools.js' ]
+37 verbose url resolved https://registry.npmjs.org/tools.js
+38 verbose request where is https://registry.npmjs.org/tools.js
+39 info trying registry request attempt 1 at 20:25:45
+40 http GET https://registry.npmjs.org/tools.js
+41 http 404 https://registry.npmjs.org/tools.js
+42 verbose headers { date: 'Tue, 11 Nov 2014 19:25:45 GMT',
+42 verbose headers   server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+42 verbose headers   'content-type': 'application/json',
+42 verbose headers   'cache-control': 'max-age=0',
+42 verbose headers   'content-length': '52',
+42 verbose headers   'accept-ranges': 'bytes',
+42 verbose headers   via: '1.1 varnish',
+42 verbose headers   age: '0',
+42 verbose headers   'x-served-by': 'cache-lcy1122-LCY',
+42 verbose headers   'x-cache': 'MISS',
+42 verbose headers   'x-cache-hits': '0',
+42 verbose headers   'x-timer': 'S1415733945.387955,VS0,VE352',
+42 verbose headers   'keep-alive': 'timeout=10, max=50',
+42 verbose headers   connection: 'Keep-Alive' }
+43 silly registry.get cb [ 404,
+43 silly registry.get   { date: 'Tue, 11 Nov 2014 19:25:45 GMT',
+43 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+43 silly registry.get     'content-type': 'application/json',
+43 silly registry.get     'cache-control': 'max-age=0',
+43 silly registry.get     'content-length': '52',
+43 silly registry.get     'accept-ranges': 'bytes',
+43 silly registry.get     via: '1.1 varnish',
+43 silly registry.get     age: '0',
+43 silly registry.get     'x-served-by': 'cache-lcy1122-LCY',
+43 silly registry.get     'x-cache': 'MISS',
+43 silly registry.get     'x-cache-hits': '0',
+43 silly registry.get     'x-timer': 'S1415733945.387955,VS0,VE352',
+43 silly registry.get     'keep-alive': 'timeout=10, max=50',
+43 silly registry.get     connection: 'Keep-Alive' } ]
+44 silly lockFile 60e6ab8d-tools-js tools.js@
+45 silly lockFile 60e6ab8d-tools-js tools.js@
+46 error 404 404 Not Found: tools.js
+46 error 404
+46 error 404 'tools.js' is not in the npm registry.
+46 error 404 You should bug the author to publish it
+46 error 404 It was specified as a dependency of 'node-api'
+46 error 404
+46 error 404 Maybe try 'npm search tools'
+46 error 404
+46 error 404 Note that you can also install from a
+46 error 404 tarball, folder, or http url, or git url.
+47 error System Darwin 14.0.0
+48 error command "node" "/usr/local/bin/npm" "install" "tools.js"
+49 error cwd /Applications/XAMPP/xamppfiles/htdocs/Homework/scripts
+50 error node -v v0.10.32
+51 error npm -v 1.4.28
+52 error code E404
+53 verbose exit [ 1, true ]

@@ -1,27 +1,36 @@
 /** @jsx React.DOM */
 var Chart = React.createClass({
-	// componentDidMount: function() {
-	// 	var margin = {top: 40, right: 40, bottom: 0, left:0};
-	// 	var svg = d3.select('svg')
-	// 			    .attr('class', 'chart')
-	// 			    .attr('width', this.props.width)
-	// 			    .attr('height', this.props.height + margin.top)
-	// 			  	.append('g')
-	// 			    .attr('transform', 'translate(' + margin.left + ', ' + margin.top + ')');
-
-	// 	var xScale = d3.scale.ordinal()
-	// 			  .domain(_.range(1, this.props.data.length + 1).reverse())
-	// 			  .rangeRoundBands([1, this.props.width], 0.05);
+	updateAxis: function() {
+		var margin = {top: 40, right: 40, bottom: 0, left:0};
+		var svg = d3.select('svg')
+				    .attr('class', 'chart')
+				    .attr('width', this.props.width)
+				    .attr('height', this.props.height + margin.top)
+				  	.append('g')
+				    .attr('transform', 'translate(' + margin.left + ', ' + margin.top + ')');
+		var xScale = d3.scale.ordinal()
+					  .domain(_.range(1, this.props.data.length + 1).reverse())
+					  .rangeRoundBands([1, this.props.width], 0.05);
+		// var xScale = d3.time.scale()
+		// 		  .domain(_.range(this.props.data[0].time, this.props.data[this.props.data.length - 1].time).reverse())
+		// 		  .rangeRound([0, this.props.width - margin.left - margin.right]);
 		
-	// 	var xAxis = d3.svg.axis()
-	// 	    .scale(xScale)
-	// 	    .orient("bottom");
-  
-	//     svg.append('g')
-	// 	    .attr('class', 'x axis')
-	// 	    .attr('transform', 'translate(0, ' + (this.props.height - margin.top - margin.bottom) + ')')
-	// 	    .call(xAxis);
-	// },
+		var xAxis = d3.svg.axis()
+		    .scale(xScale)
+		    .orient("bottom")
+  		
+  		d3.select(".x").remove();
+	    svg.append('g')
+		    .attr('class', 'x axis')
+		    .attr('transform', 'translate(0, ' + (this.props.height - margin.top - margin.bottom) + ')')
+		    .call(xAxis);
+	},
+	componentDidMount: function() {
+		this.updateAxis();
+	},
+	componentDidUpdate: function(prevProps, prevState) {
+		this.updateAxis();
+	},
 	render: function() {
 		return (
 	    	<svg width={this.props.width} height={this.props.height}>{this.props.children}</svg>
@@ -73,9 +82,13 @@ var DataSeries = React.createClass({
 	,
 	render: function() {
 		var props = this.props;
-		
+
+		var max = _.max(this.props.data, function (o) {
+			return o.data;
+		});
+
 		var yScale = d3.scale.linear()
-		  .domain([0, d3.max(this.props.data)])
+		  .domain([0, max.data])
 		  .range([0, this.props.height]);
 
 		var xScale = d3.scale.ordinal()
@@ -84,12 +97,12 @@ var DataSeries = React.createClass({
 		
 		var bars = this.props.data.map(function(point, i) {
 			return (
-				<Bar value={point} height={yScale(point)} width={xScale.rangeBand()} offset={xScale(i)} availableHeight={props.height} key={i} />
+				<Bar value={point.data} height={yScale(point.data)} width={xScale.rangeBand()} offset={xScale(i)} availableHeight={props.height} key={i} />
 			)
 		});
 		var titles = this.props.data.map(function(point, i) {
 			return (
-		  		<Title height={yScale(point)} width={xScale.rangeBand()} availableHeight={props.height} value={point} offset={xScale(i)} key={i} />
+		  		<Title height={yScale(point.data)} width={xScale.rangeBand()} availableHeight={props.height} value={point.data} offset={xScale(i)} key={i} />
 			)
 		});
 		return (

@@ -20,7 +20,8 @@ app.get('/getLast100WithGraph', function (req, res, next) {
   		var infos = JSON.parse(body);
   		var commitsGrouppedByDate = _.chain(infos)
 			    				.groupBy(function(item) {
-			    					return getFormattedDate(item.commit.author.date);
+			    					if (item.author != null)
+			    						return getFormattedDate(item.commit.author.date);
 			    				})
 			    				.value();
 		var trueResults = [];
@@ -31,8 +32,12 @@ app.get('/getLast100WithGraph', function (req, res, next) {
 	    						return item.author.login;
 	    					}));
     	});
-		var statsData = _.map(commitsGrouppedByDate, function(o) {return o.length}).reverse();
-		var commitsSum = _.reduce(statsData, function(memo, value){ return memo + value; }, 0);
+		var statsData = _.map(commitsGrouppedByDate, function(o) 
+			{
+				if (o[0].commit != null)
+					return {time : o[0].commit.author.date, data : o.length}
+			}).reverse();
+		var commitsSum = _.reduce(statsData, function(memo, value){ if(!_.isUndefined(value)) return memo + value.data; }, 0);
 		var temp = _.groupBy(infos, function(o){if (o.author != null)return o.author.login; });
 		var committersCount = _.reduce(_.map(temp, function(o, index) {return 1;}), function(memo, num){ return memo + num; }, 0)
 		res.send({commitsGrouppedByDate : trueResults, statsData : statsData, commitsSum : commitsSum, committersCount : committersCount});
@@ -51,7 +56,8 @@ app.get('/getLast100Commits', function (req, res, next) {
   		var authors = _.filter(infos, function(committer) {return committer.author !== null;});
     	var commitPerAuthors = _.chain(authors)
     				.groupBy(function(item) {
-    					return item.author.login;
+    					if (item.author != null)
+    						return item.author.login;
     				})
     				.sortBy(function(item) {
     					return item.length;

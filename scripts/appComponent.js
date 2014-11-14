@@ -6,20 +6,8 @@ var DefaultRoute = ReactRouter.DefaultRoute;
 
 var App = React.createClass({
   mixins: [ CurrentPath, ReactRouter.Navigation ],
-  handleSubmit: function(e) {
-    e.preventDefault();
-    this.transitionTo('/', {searchTerm : "coucou"});
-  },
-	render: function() {
+  render: function() {
     var visible = this.getCurrentPath().length > 1;
-    // <div className="collapse navbar-collapse">
-    //             <form className="navbar-form navbar-right" role="search" onSubmit={this.handleSubmit}>
-    //               <div className="form-group">
-    //                 <input type="text" className="form-control" placeholder="Recherche" />
-    //               </div>
-    //               <button type="submit" className="btn btn-default"><span className="glyphicon glyphicon-search"></span></button>
-    //             </form>
-    //           </div>
 		return (
       <div>
         { visible ?

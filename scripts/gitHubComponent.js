@@ -51,7 +51,6 @@ var GitHubSearch = React.createClass({
     this.props.handleSubmit(this.refs.repo.getDOMNode().value.trim());
   },
   render: function() {
-    
     return (
       <div className="page-header">
         <h1>GitHub <small>Homework</small></h1>

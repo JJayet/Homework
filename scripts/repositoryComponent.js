@@ -44,9 +44,7 @@ var ContributorsList = React.createClass({
 	    var ajaxRequest = gitHubRequester.getContributors(fullName, numberToPull, this.state.pageNumber);
 	    ajaxRequest
 	      .done(function(data) {
-	          this.setState({data: this.state.data.concat(data)});
-	          this.setState({pageNumber: this.state.pageNumber + 1});
-	          this.setState({done: true});
+	          this.setState({data: this.state.data.concat(data), pageNumber: this.state.pageNumber + 1, done : true});
 	          if (data.length == numberToPull && getEverything)
 	          	this.loadGitContributors(true, 50);
 	        }.bind(this))
@@ -112,7 +110,8 @@ var ContributorsActivity = React.createClass({
 	    var ajaxRequest = gitHubRequester.getLast100CommitsActivity(fullName, 100);
 	    ajaxRequest
 	      .done(function(data) {	      	
-	          this.setState({data: data, done: true});
+	          this.setState({data: data
+	          				, done: true});
 	        }.bind(this))
 	      .fail(function(xhr, status, err) {
 	          console.error(this.props.url, status, err.toString());
@@ -259,7 +258,6 @@ var LastHundredCommitsTimeline = React.createClass({
 	    	var counter = 0;
 	    	
 	    	var results = _.each(this.state.data.commitsGrouppedByDate, function(item) {
-	    		//trueResultsToDisplay.push(<h4>{new Tools().getFormattedDate(item[0].commit.author.date)}</h4>);
 	    		_.map(item, function(i, index){
 	    			var topCaption = new Tools().getFormattedDate(i.commit.author.date);
 		    		if (i.author == null)

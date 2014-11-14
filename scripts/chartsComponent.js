@@ -8,7 +8,7 @@ var Chart = React.createClass({
 				    .attr('height', this.props.height + margin.top)
 				  	.append('g')
 				    .attr('transform', 'translate(' + margin.left + ', ' + margin.top + ')');
-		console.info(this.props.width);
+		
 		var xScale = d3.scale.ordinal()
 					   .domain(_.map(this.props.data, function(o) {return new Tools().getFormattedDate(o.time);}))
 					   .rangeRoundBands([0, this.props.width], 0);
@@ -18,6 +18,7 @@ var Chart = React.createClass({
 		    .orient("bottom")
   		
   		d3.select(".x").remove();
+
 	    svg.append('g')
 		    .attr('class', 'x axis')
 		    .attr('transform', 'translate(0, ' + (this.props.height - margin.top - margin.bottom) + ')')
@@ -97,12 +98,12 @@ var DataSeries = React.createClass({
 		  .domain(d3.range(this.props.data.length))
 		  .rangeRoundBands([0, this.props.width], 0.05);
 		
-		var bars = this.props.data.map(function(point, i) {
+		var bars = _.map(this.props.data, function(point, i) {
 			return (
 				<Bar value={point.data} height={yScale(point.data)} width={xScale.rangeBand()} offset={xScale(i)} availableHeight={props.height} key={i} />
 			)
 		});
-		var titles = this.props.data.map(function(point, i) {
+		var titles = _.map(this.props.data, function(point, i) {
 			return (
 		  		<Title height={yScale(point.data)} width={xScale.rangeBand()} availableHeight={props.height} value={point.data} offset={xScale(i)} key={i} />
 			)
